@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>ePRICE - Notify v1.0</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- INCLUDE CSS DEPENDENCIES -->
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+          integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+          crossorigin="anonymous">
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet"
+          href="css/footer.css">
+    <link rel="icon"
+          type="image/png"
+          href="https://avatars2.githubusercontent.com/u/24282085?s=460&v=4">
+</head>
+
+<body>
+
+<div class="container">
+    <!-- BLACK HOUR LOADING -->
+    <div id="loading">
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1 class="display-3 text-info">ePRICE Black Hours</h1>
+                <p class="lead">Sto recuperando i dati riguardo la Black Hour da ePrice! <br>
+                    <strong>RICORDA: Lascia il tuo PC acceso se vuoi ricevere una notifica via email all'indirizzo selezionato!</strong></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- BLACK HOUR NOT ACTIVE -->
+    <div id="offlineBH" style="display: none;">
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1 class="display-3 text-danger">ePRICE Black Hours</h1>
+                <p class="lead">L'ora segreta non è ancora attiva. Sarà attiva tra le 06 e le 24 di questa giornata, ritorna più tardi! <br>
+                <strong>RICORDA: Lascia il tuo PC acceso se vuoi ricevere una notifica via email all'indirizzo selezionato!</strong></p>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- BLACK HOUR ACTIVE -->
+    <div id="onlineBH" style="display: none;">
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1 class="display-3 text-success">ePRICE Black Hours</h1>
+                <p class="lead">L'ora segreta è attiva! Controlla il carrello ed acquista in fretta tutti i prodotti. <br>
+                    <strong>RICORDA: Devi essere loggato sul sito di ePRICE prima di utilizzare questo software!</strong></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- BLACK HOUR ENDED -->
+    <div id="endedBH" style="display: none;">
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1 class="display-3 text-warning">ePRICE Black Hours</h1>
+                <p class="lead">L'ora segreta è già terminata per oggi, torna domani. <br>
+                    <strong>RICORDA: Lascia il tuo PC acceso se vuoi ricevere una notifica via email all'indirizzo selezionato!</strong></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- BLACK HOUR NOT AVAILABLE -->
+    <div id="notAvailableBH" style="display: none;">
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1 class="display-3 text-danger">ePRICE Black Hours</h1>
+                <p class="lead">L'ora segreta non è più disponibile, sei arrivato tardi!<br>
+                    <strong>INFO: La Black Hour è stata attiva dal 06/11/2017 al 23/11/2017!</strong></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- EMAIL BOX -->
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <h4 class="alert-heading">ATTENZIONE!</h4>
+        <p>Ricordati di inserire il tuo indirizzo email corretto nel campo sottostante per ricevere un'email di notifica quando verrà attivata la Black Hour!
+            <br>Il tuo indirizzo <strong>NON</strong> verrà condiviso con nessuno!</p>
+        <hr>
+        <p class="mb-0">Basta scrivere il proprio indirizzo email, non c'è bisogno di premere alcun bottone.</p>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="input-group w-50 m-3">
+        <span class="input-group-addon">@</span>
+        <input type="text" class="form-control" placeholder="Inserisci la tua email"
+               aria-label="email" aria-describedby="email" name="email-input" id="email-input">
+    </div>
+
+    <!-- ALERT ZONE -->
+    <div id="alert-zone"></div>
+
+    <!-- PRODUCT's TABLE -->
+    <table class="table table-hover">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Sku</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Prezzo</th>
+        </tr>
+        </thead>
+        <tbody id="product-table">
+        </tbody>
+    </table>
+</div>
+
+<hr class="mt-5">
+
+<!-- FOOTER -->
+<footer class="footer-style mt-5">
+    <div class="container">
+        <div class="row text-muted">
+            eNotify v1.0 &copy; 2017 Developed by Samuel Roberto
+        </div>
+    </div>
+</footer>
+
+<!-- INCLUDE JS DEPENDENCIES -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+
+<script src="js/inc/variables.js"></script>
+<script src="js/inc/functions.js"></script>
+
+<script src="js/start_bh.js"></script>
+<script src="js/products.js"></script>
+
+<script src="js/inc/init.js"></script>
+</body>
+</html>
